@@ -1,0 +1,7 @@
+{
+  "final_sale_no_refund": true,
+  "refund_window_days": 30,
+  "human_review_threshold_usd": 500,
+  "auto_approve_conditions": ["damaged", "incorrect_item"],
+  "escalate_conditions": ["conflicting_order_info", "suspicious_pattern"]
+}

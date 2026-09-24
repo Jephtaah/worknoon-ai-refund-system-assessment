@@ -1,12 +1,20 @@
 import express from 'express';
 import cors from 'cors';
-import 'dotenv/config';
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import refundsRouter from './routes/refunds.js';
 import adminRouter from './routes/admin.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config();
+dotenv.config({ path: path.join(__dirname, '../../.env') });
+
 const app = express();
 
-app.use(cors({ origin: process.env.FRONTEND_ORIGIN || 'http://localhost:5173' }));
+app.use(cors({ origin: process.env.FRONTEND_ORIGIN || true }));
 app.use(express.json());
 
 app.get('/api/health', (req, res) => res.status(200).json({ status: 'ok' }));

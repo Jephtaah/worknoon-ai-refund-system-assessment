@@ -1,0 +1,17 @@
+[
+  { "customer_id": "CUST-001", "name": "Alice Mensah", "email": "alice.mensah@example.com" },
+  { "customer_id": "CUST-002", "name": "Ben Okafor", "email": "ben.okafor@example.com" },
+  { "customer_id": "CUST-003", "name": "Chidinma Eze", "email": "chidinma.eze@example.com" },
+  { "customer_id": "CUST-004", "name": "David Musa", "email": "david.musa@example.com" },
+  { "customer_id": "CUST-005", "name": "Efe Ibrahim", "email": "efe.ibrahim@example.com" },
+  { "customer_id": "CUST-006", "name": "Funke Adeyemi", "email": "funke.adeyemi@example.com" },
+  { "customer_id": "CUST-007", "name": "Grace Chukwu", "email": "grace.chukwu@example.com" },
+  { "customer_id": "CUST-008", "name": "Hassan Bello", "email": "hassan.bello@example.com" },
+  { "customer_id": "CUST-009", "name": "Ifeoma Nnamdi", "email": "ifeoma.nnamdi@example.com" },
+  { "customer_id": "CUST-010", "name": "Junaid Suleiman", "email": "junaid.suleiman@example.com" },
+  { "customer_id": "CUST-011", "name": "Kelechi Obi", "email": "kelechi.obi@example.com" },
+  { "customer_id": "CUST-012", "name": "Lola Adigun", "email": "lola.adigun@example.com" },
+  { "customer_id": "CUST-013", "name": "Mustapha Yusuf", "email": "mustapha.yusuf@example.com" },
+  { "customer_id": "CUST-014", "name": "Ngozi Eze", "email": "ngozi.eze@example.com" },
+  { "customer_id": "CUST-015", "name": "Omar Farouk", "email": "omar.farouk@example.com" }
+]

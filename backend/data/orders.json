@@ -1,0 +1,17 @@
+[
+  { "order_id": "ORD-1001", "customer_id": "CUST-001", "item": "Wireless Earbuds Pro", "price": 89.99, "purchase_date": "2026-09-18", "status": "standard", "order_condition": "ok" },
+  { "order_id": "ORD-1002", "customer_id": "CUST-002", "item": "Bluetooth Speaker", "price": 45.00, "purchase_date": "2026-07-10", "status": "standard", "order_condition": "ok" },
+  { "order_id": "ORD-1003", "customer_id": "CUST-003", "item": "Designer Sunglasses", "price": 120.00, "purchase_date": "2026-09-15", "status": "final_sale", "order_condition": "ok" },
+  { "order_id": "ORD-1004", "customer_id": "CUST-004", "item": "Leather Wallet", "price": 60.00, "purchase_date": "2026-05-01", "status": "final_sale", "order_condition": "ok" },
+  { "order_id": "ORD-1005", "customer_id": "CUST-005", "item": "4K Monitor", "price": 620.00, "purchase_date": "2026-09-10", "status": "standard", "order_condition": "damaged" },
+  { "order_id": "ORD-1006", "customer_id": "CUST-006", "item": "Running Shoes", "price": 75.00, "purchase_date": "2026-09-20", "status": "standard", "order_condition": "damaged" },
+  { "order_id": "ORD-1007", "customer_id": "CUST-007", "item": "Kitchen Blender", "price": 55.00, "purchase_date": "2026-09-22", "status": "standard", "order_condition": "incorrect_item" },
+  { "order_id": "ORD-1008", "customer_id": "CUST-008", "item": "Office Chair", "price": 310.00, "purchase_date": "2026-09-05", "status": "standard", "order_condition": "damaged" },
+  { "order_id": "ORD-1009", "customer_id": "CUST-009", "item": "Smartwatch", "price": 199.99, "purchase_date": "2026-09-19", "status": "standard", "order_condition": "ok" },
+  { "order_id": "ORD-1010", "customer_id": "CUST-010", "item": "Laptop Backpack", "price": 40.00, "purchase_date": "2026-09-21", "status": "standard", "order_condition": "incorrect_item" },
+  { "order_id": "ORD-1011", "customer_id": "CUST-011", "item": "Coffee Maker", "price": 90.00, "purchase_date": "2026-09-23", "status": "standard", "order_condition": "incorrect_item" },
+  { "order_id": "ORD-1012", "customer_id": "CUST-012", "item": "Gaming Mouse", "price": 550.00, "purchase_date": "2026-09-12", "status": "standard", "order_condition": "incorrect_item" },
+  { "order_id": "ORD-1013", "customer_id": "CUST-013", "item": "Tablet Stand", "price": 25.00, "purchase_date": "2026-09-24", "status": "standard", "order_condition": "ok" },
+  { "order_id": "ORD-1014", "customer_id": "CUST-014", "item": "Noise Cancelling Headphones", "price": 199.00, "purchase_date": "2026-08-25", "status": "standard", "order_condition": "damaged" },
+  { "order_id": "ORD-1015", "customer_id": "CUST-015", "item": "Electric Kettle", "price": 999.00, "purchase_date": "2026-06-01", "status": "final_sale", "order_condition": "damaged" }
+]

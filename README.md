@@ -81,10 +81,12 @@ Every refund request passes through a rigorous, ordered decision pipeline in `po
 
 ---
 
-## 6. Testing
-Edge-case testing and injection resistance have been verified across all 15 test cases specified in PRD Section 10 and Milestone 5. 
-
-See [TESTING.md](./TESTING.md) for the complete test matrix, payloads, expected vs. actual outcomes, and verification results (15/15 passing).
+## 6. Testing & Edge Cases
+Edge-case testing and injection resistance have been verified across all 15 test cases specified in PRD Section 10 and Milestone 5 (15/15 passing):
+- **Injections & Override Attempts:** Catch instruction overrides ("Ignore policy", "I'm a VIP", system prompt extraction) via heuristic guardrails (`escalated`).
+- **Data Validation & Authorization:** Handle non-existent orders, customer mismatches, and missing fields (`escalated` / `400`).
+- **Policy Enforcement:** Enforce final-sale precedence and 30-day refund windows (`denied`).
+- **Thresholds & AI Routing:** Auto-approve valid standard returns (`ok`), escalate high-value orders over $500, and delegate credible damage/incorrect claims to DeepSeek AI.
 
 ---
 
@@ -93,9 +95,4 @@ See [TESTING.md](./TESTING.md) for the complete test matrix, payloads, expected 
 - **Auto-Approval:** Plain returns with `order_condition: "ok"` and no policy violations are auto-approved deterministically as permitted by policy rules.
 - **Defense in Depth:** The $500 threshold check runs both pre-AI and post-AI to guarantee high-value orders are always escalated.
 - **Audit Log Persistence:** `audit-log.json` resets on container rebuild due to flat-file storage without persistent volumes—acceptable for single-session assessment.
-- **No Automated Test Suite:** Automated testing frameworks are out of scope per PRD Section 2; verification is fully documented via `TESTING.md`.
-
----
-
-## 8. Demo Video
-A 3–5 minute walkthrough video demonstrating the customer submission flow, handling of edge cases/prompt injections, admin dashboard auditing, and architecture overview is included with the submission package.
+- **No Automated Test Suite:** Automated testing frameworks are out of scope per PRD Section 2; verification is fully documented via manual test matrix results.

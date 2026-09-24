@@ -1,21 +1,21 @@
-import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar.jsx';
 import CustomerRequest from './pages/CustomerRequest.jsx';
 import AdminDashboard from './pages/AdminDashboard.jsx';
-import './App.css';
+import './index.css';
 
 export default function App() {
   return (
     <BrowserRouter>
-      <nav className="nav">
-        <NavLink to="/" end>Request a refund</NavLink>
-        <NavLink to="/admin">Admin dashboard</NavLink>
-      </nav>
-      <main className="container">
-        <Routes>
-          <Route path="/" element={<CustomerRequest />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-        </Routes>
-      </main>
+      <div className="min-h-screen bg-background text-foreground flex flex-col font-sans">
+        <Navbar />
+        <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <Routes>
+            <Route path="/" element={<CustomerRequest />} />
+            <Route path="/admin" element={<AdminDashboard />} />
+          </Routes>
+        </main>
+      </div>
     </BrowserRouter>
   );
 }

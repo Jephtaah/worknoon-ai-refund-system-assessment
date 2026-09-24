@@ -1,9 +1,16 @@
 import OpenAI from 'openai';
 
-const client = new OpenAI({
-  apiKey: process.env.DEEPSEEK_API_KEY,
-  baseURL: process.env.DEEPSEEK_BASE_URL || 'https://api.deepseek.com',
-});
+let client = null;
+
+function getClient() {
+  if (!client) {
+    client = new OpenAI({
+      apiKey: process.env.DEEPSEEK_API_KEY,
+      baseURL: process.env.DEEPSEEK_BASE_URL || 'https://api.deepseek.com',
+    });
+  }
+  return client;
+}
 
 const SYSTEM_PROMPT = `You are a refund-eligibility assistant for an e-commerce support team.
 You will be given facts about a customer's order and a message the customer wrote
@@ -50,7 +57,7 @@ function isValidAiResponse(obj) {
 
 export async function getAiDecision(order, message) {
   try {
-    const response = await client.chat.completions.create(
+    const response = await getClient().chat.completions.create(
       {
         model: process.env.DEEPSEEK_MODEL || 'deepseek-chat',
         messages: [

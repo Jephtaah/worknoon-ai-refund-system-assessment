@@ -79,7 +79,7 @@ export default function CustomerRequest() {
                 <Label htmlFor="orderId">Order Number</Label>
                 <Input
                   id="orderId"
-                  placeholder="e.g., ORD-1007"
+                  placeholder="ORD-F6655AC7E7B8"
                   value={orderId}
                   onChange={(e) => setOrderId(e.target.value)}
                   required

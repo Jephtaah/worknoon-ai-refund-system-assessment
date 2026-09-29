@@ -1,13 +1,19 @@
-const SUSPICIOUS_PATTERNS = [
-  /ignore\s+(all|any|previous|the)?\s*(polic(y|ies)|instructions?|rules?)/i,
-  /disregard\s+(all|any|previous|the)?\s*(polic(y|ies)|instructions?|rules?)/i,
-  /system\s*prompt/i,
-  /reveal\s+(your\s+)?(system\s+prompt|instructions)/i,
-  /you\s+are\s+(now\s+)?an?\s+ai/i,
-  /as\s+an?\s+ai/i,
-  /override\s+(the\s+)?(polic(y|ies)|system)/i,
-  /\b(i'?m|i\s+am)\s+(a|an)?\s*(vip|manager|ceo|owner|admin|executive)\b/i,
-];
+function compileInjectionPatterns(sources) {
+  if (!Array.isArray(sources) || sources.length === 0) {
+    throw new Error('policy.injection_patterns must be a non-empty array of regular expression strings.');
+  }
+
+  return sources.map((source, index) => {
+    if (typeof source !== 'string') {
+      throw new Error(`policy.injection_patterns[${index}] must be a string, received ${typeof source}.`);
+    }
+    try {
+      return new RegExp(source, 'i');
+    } catch (err) {
+      throw new Error(`policy.injection_patterns[${index}] is not a valid regular expression: ${err.message}`);
+    }
+  });
+}
 
 function daysSince(dateString) {
   const purchase = new Date(`${dateString}T00:00:00Z`);
@@ -29,7 +35,7 @@ function finalize(decision, reasoning, checks, source, confidence) {
 export function evaluateDeterministic({ order, message, policy }) {
   const checks = [];
 
-  const suspicious = SUSPICIOUS_PATTERNS.some((re) => re.test(message));
+  const suspicious = compileInjectionPatterns(policy.injection_patterns).some((re) => re.test(message));
   checks.push({ rule: 'injection_pattern', result: suspicious ? 'fail' : 'pass' });
   if (suspicious) {
     return finalize(
@@ -69,9 +75,9 @@ export function evaluateDeterministic({ order, message, policy }) {
     );
   }
 
-  const eligibleCondition = policy.auto_approve_conditions.includes(order.order_condition);
-  checks.push({ rule: 'order_condition', result: eligibleCondition ? 'ambiguous' : 'n/a' });
-  if (!eligibleCondition) {
+  const needsAiReview = policy.ai_review_conditions.includes(order.order_condition);
+  checks.push({ rule: 'order_condition', result: needsAiReview ? 'ambiguous' : 'n/a' });
+  if (!needsAiReview) {
     return finalize(
       'approved',
       'Standard return, within the window, with no reported issue with the item.',

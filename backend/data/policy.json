@@ -2,6 +2,13 @@
   "final_sale_no_refund": true,
   "refund_window_days": 30,
   "human_review_threshold_usd": 500,
-  "auto_approve_conditions": ["damaged", "incorrect_item"],
-  "escalate_conditions": ["conflicting_order_info", "suspicious_pattern"]
+  "ai_review_conditions": ["damaged", "incorrect_item"],
+  "injection_patterns": [
+    "\\b(?:ignore|disregard|forget)\\b[^.]{0,40}?\\b(?:polic(?:y|ies)|instructions?|rules?|guidelines?)\\b",
+    "\\b(?:you\\s+are\\s+(?:now\\s+)?an?\\s+ai|as\\s+an?\\s+ai)\\b",
+    "\\bsystem\\s*prompt\\b",
+    "\\breveal\\s+(?:your\\s+)?(?:system\\s+prompt|instructions)\\b",
+    "\\boverride\\s+(?:the\\s+)?(?:polic(?:y|ies)|system)\\b",
+    "\\b(?:i'?m|i\\s+am)\\s+(?:(?:the|a|an)\\s+)?(?:vip|manager|ceo|owner|admin|executive)\\b"
+  ]
 }

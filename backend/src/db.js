@@ -31,9 +31,14 @@ export async function getCustomerById(customerId) {
   return customers.find((c) => c.customer_id === customerId) ?? null;
 }
 
+export function normalizeOrderId(orderId) {
+  return String(orderId).trim().toUpperCase();
+}
+
 export async function getOrderById(orderId) {
   const orders = await readOrders();
-  return orders.find((o) => o.order_id === orderId) ?? null;
+  const target = normalizeOrderId(orderId);
+  return orders.find((o) => o.order_id.toUpperCase() === target) ?? null;
 }
 
 export async function appendAuditLog(entry) {
